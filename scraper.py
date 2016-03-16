@@ -21,8 +21,8 @@ def get_browse_soup(browser):
 def browse(url):                                                                                            # loads all tenders
     browser = Browser("phantomjs", service_args=['--ignore-ssl-errors=true', '--ssl-protocol=any'])
     browser.visit(portal)
-    #browser.find_by_id('lnkClearAll').first.click()
-    #time.sleep(1)
+    browser.find_by_id('lnkClearAll').first.click()
+    time.sleep(2)
     return browser
 
 
@@ -32,7 +32,7 @@ def get_scroll_soup(url):
     num_tenders = soup.find('label', id="noticeSearchTotal").text
     print 'Number of Tenders: ', num_tenders
     scrolls = (int(num_tenders)/15)+5
-    for i in range(0, 3):# TODO scrolls):
+    for i in range(0, scrolls):
         browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         time.sleep(2)
     soup = get_browse_soup(browser)
