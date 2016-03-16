@@ -183,6 +183,6 @@ if __name__ == '__main__':
 
     except KeyboardInterrupt:
         print "forced kill"
-        os._exit()
+        os._exit(0)
 
 
