@@ -32,7 +32,7 @@ def get_scroll_soup(url):
     num_tenders = soup.find('label', id="noticeSearchTotal").text
     print 'Number of Tenders: ', num_tenders
     scrolls = (int(num_tenders)/15)+5
-    for i in range(0, 100):#scrolls):
+    for i in range(0, scrolls):
         print i
         browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         time.sleep(2)
