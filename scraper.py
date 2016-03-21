@@ -34,8 +34,12 @@ def get_scroll_soup(url):
     scrolls = (int(num_tenders)/15)+5
     for i in range(0, scrolls):
         print i
-        browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(2)
+        try:
+            browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            time.sleep(2)
+        except:
+            print 'scroll failed'
+            continue
     soup = get_browse_soup(browser)
     print 'found links: ',len(soup.find('div', id="tblNotices").findAll('a'))
     return soup
