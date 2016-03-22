@@ -108,8 +108,6 @@ def get_unspsc_types(soup):
     return types
 
 
-
-
 if __name__ == '__main__':
 
 
