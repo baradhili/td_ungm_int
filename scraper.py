@@ -32,14 +32,27 @@ def get_scroll_soup(url):
     num_tenders = soup.find('label', id="noticeSearchTotal").text
     print 'Number of Tenders: ', num_tenders
     scrolls = (int(num_tenders)/15)+5
+    a=0                                             # set to test and add time delay if page scroll ineffective
     for i in range(0, scrolls):
         print i
         try:
             browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            time.sleep(2)
+            time.sleep(1)
         except:
             print 'scroll failed'
             continue
+        b=0
+        if len(browser.html)<=a:
+            time.sleep(1)
+            b+=1
+            if b>10:
+                soup = get_browse_soup(browser)
+                l = len(soup.find('div', id="tblNotices").findAll('a'))
+                errors.append(['scroll fail, no. pages scraped: ', l])
+                break
+        a = len(browser.html)
+        print a
+
     soup = get_browse_soup(browser)
     print 'found links: ',len(soup.find('div', id="tblNotices").findAll('a'))
     return soup
