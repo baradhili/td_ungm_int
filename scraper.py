@@ -22,7 +22,7 @@ def browse(url):                                                                
     browser = Browser("phantomjs", service_args=['--ignore-ssl-errors=true', '--ssl-protocol=any'])
     browser.visit(portal)
     browser.find_by_id('lnkClearAll').first.click()
-    time.sleep(2)
+    time.sleep(3)
     return browser
 
 
