@@ -40,18 +40,18 @@ def get_scroll_soup(url):
             time.sleep(1)
         except:
             print 'scroll failed'
+            b=0
+            if len(browser.html)<=a:
+                time.sleep(1)
+                b+=1
+                if b>10:
+                    soup = get_browse_soup(browser)
+                    l = len(soup.find('div', id="tblNotices").findAll('a'))
+                    errors.append(['scroll fail, no. pages scraped: ', l])
+                    break
+            a = len(browser.html)
+            print a
             continue
-        b=0
-        if len(browser.html)<=a:
-            time.sleep(1)
-            b+=1
-            if b>10:
-                soup = get_browse_soup(browser)
-                l = len(soup.find('div', id="tblNotices").findAll('a'))
-                errors.append(['scroll fail, no. pages scraped: ', l])
-                break
-        a = len(browser.html)
-        print a
 
     soup = get_browse_soup(browser)
     print 'found links: ',len(soup.find('div', id="tblNotices").findAll('a'))
