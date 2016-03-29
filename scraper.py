@@ -53,7 +53,7 @@ def get_scroll_soup(url):
             a = len(browser.html)
             print a
             continue
-
+    print 'fprint '
     soup = get_browse_soup(browser)
     print 'found links: ',len(soup.find('div', id="tblNotices").findAll('a'))
     return soup
