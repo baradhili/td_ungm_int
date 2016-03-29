@@ -32,6 +32,7 @@ def get_scroll_soup(url):
     num_tenders = soup.find('label', id="noticeSearchTotal").text
     print 'Number of Tenders: ', num_tenders
     scrolls = (int(num_tenders)/15)+5
+    print scrolls
     a=0                                             # set to test and add time delay if page scroll ineffective
     for i in range(0, scrolls):
         print i
