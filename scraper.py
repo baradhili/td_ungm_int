@@ -163,6 +163,7 @@ if __name__ == '__main__':
                 unspsc_types = get_unspsc_types(tender_soup)
             except Exception as e:
                 errors.append([link, e.message])
+                print  ' failed'
                 continue
 
 
