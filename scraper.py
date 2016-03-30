@@ -34,7 +34,7 @@ def get_scroll_soup(url):
     scrolls = (int(num_tenders)/15)+5
     print scrolls
     a=0                                             # set to test and add time delay if page scroll ineffective
-    for i in range(0, scrolls):
+    for i in range(0, scrolls/4): #scrolls):
         print i
         try:
             browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
@@ -53,7 +53,6 @@ def get_scroll_soup(url):
             a = len(browser.html)
             print a
             continue
-    print 'fprint '
     soup = get_browse_soup(browser)
     print 'found links: ',len(soup.find('div', id="tblNotices").findAll('a'))
     return soup
